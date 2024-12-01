@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-
-<body>
-    <div id="login_box">
-        <h1>Quản lý đăng lí học sinh viên</h1>
-        <div id="login_text">
-            <h2>Đăng nhập</h2>
-            <div class="login_choice" >
-                <form action="" method="post">
-                    <input type="text" placeholder="Tài khoản" name="admin"></input>
-                    <input type="password" placeholder="Mật khẩu" name="password"></input>
-                    <input type="submit" name="Đăng nhập"></input>
-                    <h2>sdfjkjasdfj</h2>
-                </form>
-                
-            </div>
-        </div>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QLSV</title>
+    <link rel="stylesheet" href="/CSS/login.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="loginAccount">
+      <h1>Đăng nhập</h1>
+      <div class="login_box">
+        <form action="" method="post" class="login">
+          <label for="name"
+            >&#x1F464; Nhập tài khoản: <span style="color: red">*</span></label
+          >
+          <input
+            type="text"
+            placeholder=" Tài khoản"
+            name="name"
+            id="name"
+            required
+          />
+          <label for="password"
+            >&#x1F511; Nhập mật khẩu: <span style="color: red">*</span></label
+          >
+          <input
+            type="password"
+            placeholder=" Mật khẩu"
+            name="password"
+            id="password"
+            required
+          />
+          <input type="checkbox" id="show-pass1" /> Hiển thị mật khẩu
+          <button id="but" type="submit"><b>Đăng nhập</b></button>
+          <a href="Register.html" ><button type="button"><b>Đăng ký</b></button></a>
+        </form>
+      </div>
     </div>
-</body>
+  </body>
 </html>
+<script>
+  document.getElementById("show-pass1").addEventListener("change", function () {
+    const passwordInput = document.getElementById("password");
+    passwordInput.type = this.checked ? "text" : "password";
+  });
+</script>

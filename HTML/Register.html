@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng kí - Quản lí đăng kí sinh viên</title>
+    <link rel="stylesheet" href="/CSS/Register.css">
+</head>
+<body>
+<div>
+    <form class="controls">
+        <a href="login.html"><span id="arrow">&#11013;</span></a>
+        <h1>Đăng kí</h1>
+        <div id="regisForm1">
+            <label for="input_acc">&#x1F464; Nhập tài khoản:<span style="color: red">*</span></label><br>
+            <input type="text" name="input_acc" id="input_acc" placeholder="Tài khoản" required>
+        </div>
+        <div id="regisForm2">
+            <label for="input_pass">&#x1F511; Nhập mật khẩu:<span style="color: red">*</span></label><br>
+            <input type="password" name="input_pass" id="input_pass" placeholder="Mật khẩu" required>
+            <input type="checkbox" id="show-pass1"> Hiển thị mật khẩu
+        </div>
+        <div id="regisForm3">
+            <label for="input_agPass">&#x1F511; Nhập lại mật khẩu:<span style="color: red">*</span></label><br>
+            <input type="password" name="input_agPass" id="input_agPass" placeholder="Mật khẩu" required>
+            <input type="checkbox" id="show-pass2"> Hiển thị mật khẩu
+        </div>
+        <div>
+            <button type="submit" id="register" onclick="Register()"><b>Đăng kí</b></button>
+        </div>
+    </form>
+</div>
+
+<script src="/Project%20Student%20Manager/JavaScript/Register.js"></script>
+</body>
+</html>
