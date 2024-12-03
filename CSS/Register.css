@@ -46,19 +46,6 @@ label {
     color: #333;
 }
 
-input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    padding: 10px;
-    margin: 6px 6px 30px 0px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 10px;
-    display: inline-block;
-    margin-left: 10px;
-    accent-color: rgb(180, 39, 39);
-}
-
 #register {
     width: 100%;
     padding: 12px;

@@ -5,47 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QLSV</title>
     <link rel="stylesheet" href="/CSS/login.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div id="loginAccount">
       <h1>Đăng nhập</h1>
       <div class="login_box">
         <form action="" method="post" class="login">
-          <label for="name"
-            >&#x1F464; Nhập tài khoản: <span style="color: red">*</span></label
-          >
-          <input
-            type="text"
-            placeholder=" Tài khoản"
-            name="name"
-            id="name"
-            required
-          />
-          <label for="password"
-            >&#x1F511; Nhập mật khẩu: <span style="color: red">*</span></label
-          >
-          <input
-            type="password"
-            placeholder=" Mật khẩu"
-            name="password"
-            id="password"
-            required
-          />
-          <input type="checkbox" id="show-pass1" /> Hiển thị mật khẩu
-          <a href=""><button id="but" type="submit"><b>Đăng nhập</b></button></a>
-          <a href="Register.html" ><button type="button"><b>Đăng ký</b></button></a>
+          <label for="name">&#x1F464; Nhập tài khoản: <span style="color: red">*</span></label>
+          <input type="text" placeholder=" Tài khoản" name="name" id="name" required/>
+          <label for="password">&#x1F511; Nhập mật khẩu: <span style="color: red">*</span></label>
+          <input type="password" placeholder=" Mật khẩu" name="password" id="password" required/>
+          <button id="but" type="button" onclick="login()"><b>Đăng nhập</b></button>
+          <a href="/HTML/Register.html">
+            <button type="button" id="btn_regis"><b>Đăng ký</b></button>
+          </a>
+          <div id="error" style="color:red; text-align: center; margin-top: 10px;" ></div>
         </form>
       </div>
     </div>
+    <script src="/JS/Login.js"></script>
   </body>
 </html>
-<script>
-  document.getElementById("show-pass1").addEventListener("change", function () {
-    const passwordInput = document.getElementById("password");
-    passwordInput.type = this.checked ? "text" : "password";
-  });
-</script>

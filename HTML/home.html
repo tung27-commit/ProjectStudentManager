@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/CSS/Home.css">
+</head>
+<body>
+    <div class="sidebar">
+        <button class="toggle-btn">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="logo">
+            <h2>Quản lý sinh viên</h2>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Quản lý Sinh viên</span>
+            </div>
+            <div class="menu-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>Quản lý Tín chỉ</span>
+            </div>
+            <div class="menu-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span>Quản lý Học tập</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <header>
+            <h1>Danh sách sinh viên</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm mã sinh viên">
+                <button>Tìm kiếm</button>
+            </div>
+        </header>
+        <section class="table" id="student-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã sinh viên</th>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Khóa</th>
+                    <th>Khoa</th>
+                </tr>
+                </thead>
+                <tbody id="student-list">
+                    <!-- Dữ liệu sẽ được load động từ JavaScript -->
+                </tbody>
+            </table>
+            <footer>
+                <button class="add-student">Nhập sinh viên</button>
+                <button class="delete-student">Xóa sinh viên</button>
+            </footer>
+        </section>
+
+        <!-- Add Student Popup -->
+        <div id="addStudentPopup" class="popup">
+            <div class="popup-content">
+                <h2>Thêm Sinh Viên</h2>
+                <form id="addStudentForm">
+                    <input type="text" name="student_code" placeholder="Mã sinh viên" required>
+                    <input type="text" name="name" placeholder="Họ và tên" required>
+                    <input type="date" name="dob" required>
+                    <input type="text" name="course" placeholder="Khóa" required>
+                    <input type="text" name="faculty" placeholder="Khoa" required>
+                    <div class="popup-buttons">
+                        <button type="submit">Thêm</button>
+                        <button type="button" class="cancel">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Student Popup -->
+        <div id="deleteStudentPopup" class="popup">
+            <div class="popup-content">
+                <h2>Xóa Sinh Viên</h2>
+                <form id="deleteStudentForm">
+                    <input type="text" name="student_code" placeholder="Mã sinh viên cần xóa" required>
+                    <div class="popup-buttons">
+                        <button type="submit">Xóa</button>
+                        <button type="button" class="cancel">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Quản lý Tín chỉ -->
+        <section class="table" id="credit-management-table" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Môn học</th>
+                        <th>Số tín</th>
+                        <th>Ngành của môn học</th>
+                    </tr>
+                </thead>
+                <tbody id="credit-list">
+                    <!-- Dữ liệu sẽ được load động từ JavaScript -->
+                </tbody>
+            </table>
+            <footer>
+                <button class="add-subject">Thêm môn học</button>
+                <button class="delete-subject">Xóa môn học</button>
+            </footer>
+
+            <!-- Add Subject Popup -->
+            <div id="addSubjectPopup" class="popup">
+                <div class="popup-content">
+                    <h2>Thêm Môn Học</h2>
+                    <form id="addSubjectForm">
+                        <input type="text" name="subject_name" placeholder="Tên môn học" required>
+                        <input type="number" name="credits" placeholder="Số tín chỉ" required min="1" max="10">
+                        <input type="text" name="major" placeholder="Ngành của môn học" required>
+                        <div class="popup-buttons">
+                            <button type="submit">Thêm</button>
+                            <button type="button" class="cancel">Hủy</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Delete Subject Popup -->
+            <div id="deleteSubjectPopup" class="popup">
+                <div class="popup-content">
+                    <h2>Xóa Môn Học</h2>
+                    <form id="deleteSubjectForm">
+                        <input type="text" name="subject_name" placeholder="Tên môn học cần xóa" required>
+                        <div class="popup-buttons">
+                            <button type="submit">Xóa</button>
+                            <button type="button" class="cancel">Hủy</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popup Đăng ký Môn Học -->
+        <div id="registerSubjectPopup" class="popup">
+            <div class="popup-content">
+                <h2>Đăng ký Môn Học</h2>
+                <form id="registerSubjectForm">
+                    <div id="subject-checkboxes">
+                        <!-- Các checkbox môn học sẽ được load động từ JavaScript -->
+                    </div>
+                    <div class="popup-buttons">
+                        <button type="submit">Đăng ký</button>
+                        <button type="button" class="cancel">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
+<script src="/JS/Home.js"></script>

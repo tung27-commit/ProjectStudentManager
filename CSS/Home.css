@@ -1,0 +1,277 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+}
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar.collapsed .logo h2,
+.sidebar.collapsed .menu-item span {
+    display: none;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: -12px;
+    top: 20px;
+    background: #3498db;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 5px;
+}
+
+.hamburger-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 2px;
+}
+
+.hamburger-icon span {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar.collapsed .hamburger-icon span:first-child {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.sidebar.collapsed .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar.collapsed .hamburger-icon span:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #f5f6fa;
+}
+
+.logo {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #34495e;
+}
+
+.menu-items {
+    padding: 20px 0;
+}
+
+.menu-item {
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: #34495e;
+}
+
+.menu-item.active {
+    background: #3498db;
+}
+
+.menu-item svg {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.content-area {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 500px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Main content */
+.content {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+/* Table */
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table table thead {
+    background-color: #f4f4f4;
+}
+
+.table table th, .table table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table footer {
+    display: flex;
+    gap: 10px;
+}
+
+.table footer button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table footer button:hover {
+    background-color: #0056b3;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popup-content input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.popup-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-buttons button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.popup-buttons button.cancel {
+    background-color: #6c757d;
+    color: white;
+}
