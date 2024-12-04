@@ -1,30 +1,21 @@
+
 <?php
-$servername = "localhost";
-$username = "root"; // Thay bằng username của bạn
-$password = ""; // Thay bằng password của bạn
-$dbname = "student_management"; // Thay bằng tên database của bạn
+require_once 'config.php';
+if ($_SERVER("REQUEST_METHOD" === 'POST')) {
+    $subject_name = $_POST['subject_name'];
+    $credits = $_POST['credits'];
+    $major = $_POST['major'];
+    
+    $sql = "INSERT INTO subjects (subject_name, credits, major) VALUES ('?,?,?')";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $student_name, $credits, $major);
 
-// Tạo kết nối
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Kiểm tra kết nối
-if ($conn->connect_error) {
-    die("Kết nối thất bại: " . $conn->connect_error);
+    if ($stmt->execute()) {
+        echo "Thêm sinh viên thành công";
+    } else {
+        echo "LỖI: " . $stmt->error;
+    }
+    $stmt->close();
+    $conn->close();
 }
-
-// Lấy dữ liệu từ form
-$subject_name = $_POST['subject_name'];
-$credits = $_POST['credits'];
-$major = $_POST['major'];
-
-// Thêm môn học vào database
-$sql = "INSERT INTO subjects (subject_name, credits, major) VALUES ('$subject_name', $credits, '$major')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Thêm môn học thành công!";
-} else {
-    echo "Lỗi: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
 ?>
