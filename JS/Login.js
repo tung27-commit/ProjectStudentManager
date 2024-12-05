@@ -10,7 +10,7 @@ function login(){
     const error = document.getElementById("error");
     if(username === adminAccount.username && password === adminAccount.password){
         alert("Welcome Admin");
-        window.location.href = "/JS/home.html";
+        window.location.href = "/main/home.php";
     }
     else{
         document.getElementById("username").value = "";
