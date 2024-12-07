@@ -16,7 +16,7 @@ if($_SERVER("REQUEST_METHOD"=== 'POST')){
         echo "Thêm sinh viên thành công";
     }
     else{
-        echo "LỖI: " . $stmr->error;
+        echo "LỖI: " . $stmt->error;
     }
     $stmt->close();
     $conn->close();
