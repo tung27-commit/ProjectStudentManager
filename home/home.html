@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="Home.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h3>QUẢN LÝ ĐĂNG KÝ SINH VIÊN</h3>
+      <hr />
+      <div class="menu-link collapsible">
+        <span class="menu-text-home"><a href="home.html">Trang chủ</a></span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-link collapsible">
+          <span class="menu-text">Quản lý sinh viên</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-link collapsible">
+          <span class="menu-text">Quản lý tín chỉ</span>
+          <span class="menu-toggle">▼</span>
+        </div>
+        <ul class="submenu">
+          <li><a href="#">Nhập tín chỉ</a></li>
+          <li><a href="#">Đăng ký tín chỉ</a></li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <div class="menu-link collapsible">
+          <span class="menu-text">Quản lý học tập</span>
+          <span class="menu-toggle">▼</span>
+        </div>
+        <ul class="submenu">
+          <li><a href="#">Chuyên cần</a></li>
+          <li><a href="#">Kết quả học tập</a></li>
+          <li><a href="#">Xếp loại</a></li>
+        </ul>
+      </div>
+      <div class="profile-sidebar">
+        <div class="profile-avatar">
+          <img src="Img/It's%20me.jpg" alt="Avatar" />
+        </div>
+        <span class="profile-name">Trần Đức Anh</span>
+      </div>
+    </div>
+
+    <div class="sidebar-main">
+      <div class="menu-item-profile">
+        <ul class="submenu">
+          <li><a href="#">Đổi tên</a></li>
+          <li><a href="#">Đổi ảnh</a></li>
+        </ul>
+      </div>
+      <h2 id="header2">Danh Sách Sinh Viên</h2>
+      <div class="dark-mode-toggle">
+        <button id="darkModeButton" onclick="toggleDarkMode()">
+          Bật Dark Mode
+        </button>
+      </div>
+      <hr />
+      <div id="Find">
+        <div class="find">
+          <input
+            type="text"
+            name="textSearch"
+            id="textSearch"
+            placeholder="Tìm kiếm theo mã sinh viên, tên..."
+          />
+          <button type="button" id="btnSearch" onclick="searchStudent()">
+            Tìm kiếm
+          </button>
+        </div>
+      </div>
+
+      <section class="table" id="student-table">
+        <table>
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã sinh viên</th>
+              <th>Họ và tên</th>
+              <th>Ngày sinh</th>
+              <th>Lớp</th>
+              <th>Khoa</th>
+            </tr>
+          </thead>
+          <tbody id="student-list">
+            <!-- Dữ liệu sinh viên sẽ được hiển thị ở đây -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Form chỉnh sửa sinh viên -->
+      <div class="edit-form-container" style="display: none">
+        <h2>Chỉnh sửa sinh viên</h2>
+        <hr />
+        <form class="edit-form">
+          <div class="form-group">
+            <label for="studentId">Mã sinh viên</label>
+            <input type="text" id="studentId" name="studentId" />
+          </div>
+          <div class="form-group">
+            <label for="fullName">Họ và tên</label>
+            <input type="text" id="fullName" name="fullName" />
+          </div>
+          <div class="form-group">
+            <label for="birthDate">Ngày sinh</label>
+            <input type="date" id="birthDate" name="birthDate" />
+          </div>
+          <div class="form-group">
+            <label for="className">Lớp</label>
+            <input type="text" id="className" name="className" />
+          </div>
+          <div class="form-group">
+            <label for="major">Khoa</label>
+            <input type="text" id="major" name="major" />
+          </div>
+          <div class="buttons">
+            <button type="button" class="cancel" onclick="hideEditForm()">
+              Hủy
+            </button>
+            <button type="submit" class="update">Cập nhật</button>
+          </div>
+        </form>
+      </div>
+      <div class="button">
+        <div class="addSinhVien">
+          <button type="button" onclick="showPopup()">Thêm sinh viên</button>
+        </div>
+        <div class="EditSinhVien">
+          <button type="button" onclick="editStudent()">Sửa sinh viên</button>
+        </div>
+        <div class="DeleteSinhVien">
+          <button type="button" onclick="deleteStudent()">Xóa sinh viên</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Thêm Sinh Viên -->
+    <div id="overlay"></div>
+    <div id="addStudentPopup">
+      <form id="addStudentForm" onsubmit="addStudent(event)">
+        <h2>Thêm sinh viên</h2>
+        <label for="name">Tên:</label>
+        <input type="text" id="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        <label for="class">Lớp:</label>
+        <input type="text" id="class" required />
+        <button type="submit">Thêm</button>
+        <button type="button" onclick="closePopup()">Đóng</button>
+      </form>
+    </div>
+    <script src="Home.js"></script>
+  </body>
+</html>

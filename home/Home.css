@@ -1,0 +1,588 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang nếu vẫn còn */
+    box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước thực tế */
+}
+
+/* Sidebar container */
+.sidebar {
+    position: relative;
+    width: 25%;
+    background-color: rgb(223, 222, 222);
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung quá dài */
+    border: 2px black solid;
+    padding-bottom: 80px; /* Tạo khoảng trống cho profile */
+}
+
+.sidebar hr {
+    margin-top: 29px;
+    height: 2px;
+    border: none;
+    background-color: #000000;
+}
+
+.sidebar h3 {
+    text-align: center;
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 23px;
+}
+
+/* Menu item */
+.menu-item {
+    margin-bottom: 15px;
+}
+
+.menu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    font-family:"Palatino Linotype", Times, serif;
+    font-size: 20px ;
+    background-color: #AAF400FF;
+}
+
+.menu-link:hover {
+    background-color: #89ff00;
+}
+
+.menu-text-Profile {
+    width: 40px; /* Chiều rộng của hình ảnh */
+    height: 40px; /* Chiều cao của hình ảnh */
+    border-radius: 50%; /* Làm bo góc thành hình tròn */
+    overflow: hidden; /* Ẩn các phần dư bên ngoài */
+    object-fit: cover; /* Giữ tỷ lệ hình ảnh phù hợp */
+    border: 2px solid #ccc; /* Viền xung quanh (tuỳ chọn) */
+}
+
+.menu-toggle {
+    font-size: 12px;
+    color: #ccc;
+}
+
+/* Submenu */
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 20px;
+    display: none;
+}
+
+.submenu li {
+    margin: 5px 0;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    padding: 8px;
+    border-radius: 15px;
+    font-family:"Palatino Linotype", Times, serif;
+    font-size: 20px ;
+    background-color: #AAF400FF;
+    font-weight: bold;
+
+}
+
+.submenu a:hover {
+    background-color: #89ff00;
+}
+
+.content_head {
+    flex-grow: 1; /* Phần này sẽ mở rộng để chiếm phần còn lại */
+    width: 100%;
+    height: 600px;
+    background-color: rgb(143, 143, 143);
+}
+
+.sidebar-main {
+    flex-grow: 1; /* Mở rộng để chiếm phần còn lại của không gian */
+    padding: 0;
+    margin: 0;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto; /* Thêm cuộn dọc nếu nội dung quá dài */
+    border: 2px black solid;
+}
+
+.sidebar-main h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-top: -20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.sidebar-main hr {
+    margin-top: -1px;
+    height: 2px;
+    background-color: #000000;
+    border: none;
+}
+
+.menu-item-profile {
+    position: relative;
+    width: 200px;
+    height: 45px;
+    margin-left: auto;
+    padding: 0;
+}
+
+
+.collapsible-profile {
+    position: fixed;
+    margin-top: -75px;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer; /* Thêm chỉ thị con trỏ để cho biết mục có thể nhấn vào */
+    padding: 5px;
+    height: 35px;
+}
+.collapsible-profile .menu-text {
+    color: #000000;
+    font-family:"Palatino Linotype", Times, serif;
+    font-size: 20px;
+    margin-right: 20px;
+    padding-left:20px ;
+}
+.collapsible-profile:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.collapsible {
+    margin-bottom: 10px;
+    height: 30px;
+}
+
+.menu-item-profile .submenu {
+    position: absolute; /* Đặt submenu ở vị trí tuyệt đối */
+    /*    top: -100%; !* Di chuyển submenu lên phía trên của mục profile *!*/
+    /*    left: 0; !* Căn trái cho submenu *!*/
+    background-color: rgba(255, 255, 255, 0); /* Màu nền với độ mờ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng cho submenu */
+    display: none; /* Ẩn submenu mặc định */
+    z-index: 1000; /* Đảm bảo nó hiển thị phía trên các thành phần khác */
+}
+
+/* Hiển thị submenu khi được mở */
+
+.menu-item-profile .submenu.open {
+    display: block; /* Hiển thị submenu */
+}
+
+.table {
+    margin-top: 5px;
+    width: 96%;
+    overflow-x: auto; /* Để cuộn ngang nếu nội dung dài */
+    padding: 10px;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse; /* Loại bỏ khoảng trống giữa các ô */
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: white;
+}
+
+.table th {
+    background-color: #f4f4f9;
+    text-align: center;
+}
+
+.content_head footer {
+    padding: 10px;
+}
+
+.content_head h2 {
+    text-align: center;
+    padding: 20px 20px 0;
+    font-size: 30px;
+    color: white;
+}
+
+#Find {
+    text-align: center; /* Căn giữa nội dung bên trong */
+    margin: 0 auto; /* Căn giữa bản thân theo chiều ngang */
+}
+
+.content_head #Find input {
+    border: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.content_head #Find button {
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+#Find button:hover {
+    background-color: #3a519d;
+}
+
+#btnSearch {
+    background-color: #333333;
+    color: white;
+}
+
+
+.menu-link .menu-text-home a {
+    color: #000000;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.content_head hr {
+    margin-top: -20px;
+}
+
+#Find {
+    display: flex; /* Đặt các phần tử con theo hàng ngang */
+    justify-content: right; /* Căn giữa các phần tử con theo chiều ngang */
+    /*align-items: center; !* Căn giữa các phần tử con theo chiều dọc *!*/
+    gap: 15px; /* Khoảng cách giữa các phần tử */
+    margin: 20px auto; /* Căn giữa phần tử Find và thêm khoảng cách trên dưới */
+    flex-wrap: wrap; /* Cho phép nội dung xuống hàng khi không đủ không gian */
+    padding-right: 35px;
+}
+
+#Find button {
+    border-radius: 4px;
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+#Find button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+#Find input {
+    border-radius: 4px;
+    width: 400px;
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+.edit-form-container {
+    padding: 20px;
+}
+
+.edit-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.edit-form .buttons {
+    margin-top: 20px;
+}
+
+.edit-form button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-form .cancel {
+    background-color: #ccc;
+}
+
+.edit-form .update {
+    background-color: #0f0;
+    color: white;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#addStudentPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 400px;
+}
+
+#addStudentPopup input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+#addStudentPopup button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#addStudentPopup h2 {
+    text-align: center;
+}
+/* Add styles for collapsible menu and submenu */
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-link {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    float: right;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.submenu li {
+    padding: 5px 0;
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.menu-item.active .submenu {
+    display: block;
+}
+
+.menu-item.active .menu-toggle {
+    transform: rotate(90deg);
+}
+
+.button {
+    display: none; /* Ẩn các nút mặc định */
+    margin-top: 10px;
+}
+
+.button div {
+    padding: 20px;
+}
+
+.content_head .button {
+
+}
+.menu-toggle{
+    color: black;
+}
+/* Dark Mode cho toàn bộ trang */
+body.dark-mode {
+    background-color: #1a1a1a; /* Nền tối */
+    color: #e4e4e4; /* Chữ sáng */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode cho sidebar */
+.sidebar.dark-mode {
+    background-color: #2a2a2a; /* Màu nền tối */
+    color: #e4e4e4; /* Màu chữ sáng */
+    border-color: #444; /* Đổi màu viền */
+}
+
+/* Dark Mode cho thẻ h3 trong sidebar */
+.sidebar.dark-mode h3 {
+    color: #f0f0f0;
+}
+
+/* Dark Mode cho các liên kết và menu */
+.sidebar.dark-mode .menu-link,
+.sidebar.dark-mode .submenu a {
+    background-color: #3a3a3a; /* Màu nền menu */
+    color: #e4e4e4; /* Màu chữ menu */
+}
+
+.sidebar.dark-mode .menu-link:hover,
+.sidebar.dark-mode .submenu a:hover {
+    background-color: #555555; /* Hiệu ứng hover */
+}
+
+/* Dark Mode cho khu vực chính */
+.sidebar-main.dark-mode {
+    background-color: #2a2a2a; /* Nền tối */
+    color: #e4e4e4; /* Chữ sáng */
+}
+
+/* Dark Mode cho bảng */
+.sidebar-main.dark-mode .table th,
+.sidebar-main.dark-mode .table td {
+    background-color: #333333; /* Màu nền các ô */
+    color: #e4e4e4; /* Màu chữ */
+    border-color: #444; /* Viền ô */
+}
+
+.sidebar-main.dark-mode .table th {
+    background-color: #444444; /* Màu nền tiêu đề bảng */
+}
+
+/* Dark Mode cho các nút */
+.dark-mode button {
+    background-color: #444444; /* Nền nút */
+    color: #e4e4e4; /* Chữ */
+    border: 1px solid #555555;
+}
+
+.dark-mode button:hover {
+    background-color: #555555; /* Hover nút */
+}
+
+/* Dark Mode cho popup */
+.dark-mode #addStudentPopup {
+    background-color: #333333; /* Nền popup */
+    color: #e4e4e4; /* Chữ popup */
+}
+
+.dark-mode #addStudentPopup input {
+    background-color: #444444; /* Ô nhập */
+    color: #e4e4e4; /* Chữ ô nhập */
+    border: 1px solid #555555;
+}
+
+.dark-mode #addStudentPopup button {
+    background-color: #444444; /* Nền nút popup */
+    color: #e4e4e4; /* Chữ nút popup */
+}
+.dark-mode-toggle{
+    position: absolute;
+    margin-top: -55px;
+    padding-left: 800px;
+}
+
+/* Style cho profile trong sidebar */
+.profile-sidebar {
+    position: absolute; /* Thay đổi từ fixed thành absolute */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của sidebar */
+    background-color: rgb(223, 222, 222);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border-top: 2px solid #000000;
+    box-sizing: border-box;
+}
+
+/* Style cho container của avatar */
+.profile-avatar {
+    min-width: 45px; /* Đảm bảo kích thước cố định */
+    height: 45px;
+    position: relative;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #333;
+    object-fit: cover;
+}
+
+/* Style cho tên người dùng */
+.profile-name {
+    font-weight: bold;
+    font-family: "Palatino Linotype", Times, serif;
+    font-size: 18px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1; /* Cho phép tên mở rộng để lấp đầy không gian còn lại */
+}
+
+/* Dark mode styles */
+.dark-mode .profile-sidebar {
+    background-color: #2a2a2a;
+    border-top-color: #444;
+}
+
+.dark-mode .profile-avatar img {
+    border-color: #fff;
+}
+
+.dark-mode .profile-name {
+    color: #e4e4e4;
+}
+
+/* Hover effect */
+.profile-sidebar:hover {
+    background-color: rgb(213, 212, 212);
+    cursor: pointer;
+}
+
+.dark-mode .profile-sidebar:hover {
+    background-color: #333333;
+}
+
+/* Animation cho hover */
+.profile-sidebar {
+    transition: all 0.3s ease;
+}
+
+.profile-avatar img {
+    transition: transform 0.3s ease;
+}
+
+.profile-sidebar:hover .profile-avatar img {
+    transform: scale(1.1);
+}

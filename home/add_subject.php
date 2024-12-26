@@ -11,7 +11,7 @@ if ($_SERVER("REQUEST_METHOD" === 'POST')) {
     $stmt->bind_param("sss", $student_name, $credits, $major);
 
     if ($stmt->execute()) {
-        echo "Thêm sinh viên thành công";
+        echo '<script>window.location.href = "Home.js";</script>';
     } else {
         echo "LỖI: " . $stmt->error;
     }
